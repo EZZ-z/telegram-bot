@@ -8,7 +8,7 @@ DATA = {
     "📖 شرح التجويد": {
         "درس ١ - باب الصفات": {
             "type": "audio",
-            "file_id": "CQACAgQAAxkBAAPaajPv7V8t8ooQy91ct6elR_r5io8AAmceAAL-96BRmDqOpsygnfw8BA",
+            "file_id": "CQACAgQAAxkBAAPgajPw0fomEaxuSfEOR5Z34in53csAAmkeAAL-96BRrY49IIBWitg8BA",
             "caption": "باب الصفات"
         },
     },
