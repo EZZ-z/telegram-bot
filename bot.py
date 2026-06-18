@@ -7,8 +7,8 @@ logging.basicConfig(level=logging.INFO)
 DATA = {
     "📖 شرح التجويد": {
         "درس ١ - باب الصفات": {
-            "type": "audio",
-            "file_id": "CQACAgQAAxkBAAPgajPw0fomEaxuSfEOR5Z34in53csAAmkeAAL-96BRrY49IIBWitg8BA",
+            "type": "document ",
+            "file_id": "BQACAgQAAxkBAAPsajPxkcuyTXAl1pYFr0_K39GgJzsAAmoeAAL-96BRYrczeFm9S7c8BA",
             "caption": "باب الصفات"
         },
     },
