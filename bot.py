@@ -7,8 +7,8 @@ logging.basicConfig(level=logging.INFO)
 DATA = {
     "📖 شرح التجويد": {
         "درس ١ - باب الصفات": {
-             "type": "document ",
-    "file_id": "BQACAgQAAxkBAAPsajPxkcuyTXAl1pYFr0_K39GgJzsAAmoeAAL-96BRYrczeFm9S7c8BA",
+            "type": "audio",
+            "file_id": "CQACAgQAAxkBAAOHajIkySd2yzyBJXpXtSY2H3NByP0AAi4cAAJ6rZBR36kHVfhjzog8BA",
             "caption": "باب الصفات"
         },
     },
@@ -17,7 +17,7 @@ DATA = {
 }
 
 BOT_TOKEN = "8635975989:AAEOriz1Kn6Ql6DjEkssjhfWHaSJVwrapss"
-ADMIN_ID = 1409085038
+ADMIN_ID = 1409085038  # هنغيره بعد ما نعرف الـ ID بتاعك
 
 def main_menu_keyboard():
     buttons = [[KeyboardButton(section)] for section in DATA.keys()]
@@ -43,6 +43,7 @@ def find_section(text):
     return None
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(update.effective_user.id)
     context.user_data.clear()
     await update.message.reply_text(
         "السلام عليكم ورحمة الله 👋\n\nاختر القسم اللي تريده:",
@@ -84,12 +85,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             caption = lesson_data.get("caption", text)
             if lesson_data["type"] == "audio":
                 await update.message.reply_audio(audio=file_id, caption=caption)
-            elif lesson_data["type"] == "video":
-                await update.message.reply_video(video=file_id, caption=caption)
-            elif lesson_data["type"] == "document":
-                await update.message.reply_document(document=file_id, caption=caption)
-            elif lesson_data["type"] == "photo":
-                await update.message.reply_photo(photo=file_id, caption=caption)
             return
 
     await update.message.reply_text(
@@ -102,13 +97,24 @@ async def get_file_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if update.message.audio:
-        await update.message.reply_text(f'file_id = "{update.message.audio.file_id}"')
+        await update.message.reply_text(
+            f'file_id = "{update.message.audio.file_id}"'
+        )
+
     elif update.message.document:
-        await update.message.reply_text(f'file_id = "{update.message.document.file_id}"')
+        await update.message.reply_text(
+            f'file_id = "{update.message.document.file_id}"'
+        )
+
     elif update.message.photo:
-        await update.message.reply_text(f'file_id = "{update.message.photo[-1].file_id}"')
+        await update.message.reply_text(
+            f'file_id = "{update.message.photo[-1].file_id}"'
+        )
+
     elif update.message.video:
-        await update.message.reply_text(f'file_id = "{update.message.video.file_id}"')
+        await update.message.reply_text(
+            f'file_id = "{update.message.video.file_id}"'
+        )
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
