@@ -83,8 +83,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if lesson_data:
             file_id = lesson_data["file_id"]
             caption = lesson_data.get("caption", text)
-            if lesson_data["type"] == "audio":
+           if lesson_data["type"] == "audio":
                 await update.message.reply_audio(audio=file_id, caption=caption)
+            elif lesson_data["type"] == "video":
+                await update.message.reply_video(video=file_id, caption=caption)
+            elif lesson_data["type"] == "document":
+                await update.message.reply_document(document=file_id, caption=caption)
+            elif lesson_data["type"] == "photo":
+                await update.message.reply_photo(photo=file_id, caption=caption)
             return
 
     await update.message.reply_text(
