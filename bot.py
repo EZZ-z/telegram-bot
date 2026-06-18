@@ -11,6 +11,11 @@ DATA = {
             "file_id": "CQACAgQAAxkBAAOHajIkySd2yzyBJXpXtSY2H3NByP0AAi4cAAJ6rZBR36kHVfhjzog8BA",
             "caption": "باب الصفات"
         },
+         "درس ٢ - باب المخارج"   :  {
+            "type": "audio",
+            "file_id": "CQACAgQAAxkBAAPgajPw0fomEaxuSfEOR5Z34in53csAAmkeAAL-96BRrY49IIBWitg8BA",
+            "caption": "باب المخارج"
+        },
     },
     "🌿 قراءة سورة البقرة": {
     },
