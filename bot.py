@@ -18,6 +18,11 @@ DATA = {
         },
     },
     "🌿 قراءة سورة البقرة": {
+          "درس ١- من 1 الي 5 " : {
+             "type": "audio",
+             "file_id" :"CQACAgQAAxkBAAIBIWoz_p0e4TcoV_zxEvcO9acRapXLAAKcHgAC_vegUY6rNX1-RwRsPAQ",
+             "caption" :"البقره"
+         },
     },
 }
 
