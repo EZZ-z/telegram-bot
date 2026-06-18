@@ -17,7 +17,7 @@ DATA = {
 }
 
 BOT_TOKEN = "8635975989:AAEOriz1Kn6Ql6DjEkssjhfWHaSJVwrapss"
-ADMIN_ID = 123456789  # هنغيره بعد ما نعرف الـ ID بتاعك
+ADMIN_ID = 1409085038  # هنغيره بعد ما نعرف الـ ID بتاعك
 
 def main_menu_keyboard():
     buttons = [[KeyboardButton(section)] for section in DATA.keys()]
