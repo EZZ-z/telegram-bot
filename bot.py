@@ -17,6 +17,7 @@ DATA = {
 }
 
 BOT_TOKEN = "8635975989:AAEOriz1Kn6Ql6DjEkssjhfWHaSJVwrapss"
+ADMIN_ID = 123456789  # هنغيره بعد ما نعرف الـ ID بتاعك
 
 def main_menu_keyboard():
     buttons = [[KeyboardButton(section)] for section in DATA.keys()]
@@ -42,6 +43,7 @@ def find_section(text):
     return None
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(update.effective_user.id)
     context.user_data.clear()
     await update.message.reply_text(
         "السلام عليكم ورحمة الله 👋\n\nاختر القسم اللي تريده:",
@@ -90,9 +92,37 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=main_menu_keyboard() if not current_section else lessons_keyboard(current_section)
     )
 
+async def get_file_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_ID:
+        return
+
+    if update.message.audio:
+        await update.message.reply_text(
+            f'file_id = "{update.message.audio.file_id}"'
+        )
+
+    elif update.message.document:
+        await update.message.reply_text(
+            f'file_id = "{update.message.document.file_id}"'
+        )
+
+    elif update.message.photo:
+        await update.message.reply_text(
+            f'file_id = "{update.message.photo[-1].file_id}"'
+        )
+
+    elif update.message.video:
+        await update.message.reply_text(
+            f'file_id = "{update.message.video.file_id}"'
+        )
+
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(
+        filters.AUDIO | filters.Document.ALL | filters.PHOTO | filters.VIDEO,
+        get_file_id
+    ))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     print("البوت شغال ✅")
     app.run_polling()
